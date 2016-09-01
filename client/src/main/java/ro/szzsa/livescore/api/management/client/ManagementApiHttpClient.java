@@ -10,7 +10,6 @@ import ro.szzsa.livescore.api.management.protocol.request.GameDetailsUpdateReque
 import ro.szzsa.livescore.api.management.protocol.request.GamesUpdateRequest;
 import ro.szzsa.livescore.api.management.protocol.request.StandingsUpdateRequest;
 import ro.szzsa.livescore.model.Game;
-import ro.szzsa.livescore.model.GameDetails;
 import ro.szzsa.livescore.model.Standings;
 import ro.szzsa.utils.connector.Connector;
 import ro.szzsa.utils.connector.Connectors;
@@ -28,7 +27,7 @@ public class ManagementApiHttpClient implements ManagementApiClient {
       StandingsUpdateRequest requestPayload = new StandingsUpdateRequest();
       requestPayload.setStandings(standings);
       String message = converter.toString(requestPayload);
-      Request request = new Request(ManagementApiEndpoints.UPDATE_STANDINGS.getUrl(), message);
+      Request request = new Request(ManagementApiEndpoints.UPDATE_STANDINGS_URL, message);
 
       connector.sendRequest(request);
     } catch (Exception e) {
@@ -42,7 +41,7 @@ public class ManagementApiHttpClient implements ManagementApiClient {
       GamesUpdateRequest requestPayload = new GamesUpdateRequest();
       requestPayload.setGames(games);
       String message = converter.toString(requestPayload);
-      Request request = new Request(ManagementApiEndpoints.UPDATE_GAMES.getUrl(), message);
+      Request request = new Request(ManagementApiEndpoints.UPDATE_GAMES_URL, message);
 
       connector.sendRequest(request);
     } catch (Exception e) {
@@ -51,12 +50,12 @@ public class ManagementApiHttpClient implements ManagementApiClient {
   }
 
   @Override
-  public void updateGameDetails(GameDetails gameDetails) throws ManagementApiException {
+  public void updateGameDetails(Game gameDetails) throws ManagementApiException {
     try {
       GameDetailsUpdateRequest requestPayload = new GameDetailsUpdateRequest();
       requestPayload.setGameDetails(gameDetails);
       String message = converter.toString(requestPayload);
-      Request request = new Request(ManagementApiEndpoints.UPDATE_GAME_DETAILS.getUrl(), message);
+      Request request = new Request(ManagementApiEndpoints.UPDATE_GAME_DETAILS_URL, message);
 
       connector.sendRequest(request);
     } catch (Exception e) {

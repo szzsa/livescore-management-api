@@ -4,11 +4,10 @@ import java.util.List;
 
 import ro.szzsa.livescore.api.management.client.exception.ManagementApiException;
 import ro.szzsa.livescore.model.Game;
-import ro.szzsa.livescore.model.GameDetails;
 import ro.szzsa.livescore.model.Standings;
 
 /**
- * Client of device API.
+ * Client of management API.
  */
 public interface ManagementApiClient {
 
@@ -16,5 +15,5 @@ public interface ManagementApiClient {
 
   void updateGames(List<Game> games) throws ManagementApiException;
 
-  void updateGameDetails(GameDetails gameDetails) throws ManagementApiException;
+  void updateGameDetails(Game gameDetails) throws ManagementApiException;
 }

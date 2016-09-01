@@ -1,16 +1,16 @@
 package ro.szzsa.livescore.api.management.protocol.request;
 
-import ro.szzsa.livescore.model.GameDetails;
+import ro.szzsa.livescore.model.Game;
 
 public class GameDetailsUpdateRequest {
 
-  private GameDetails gameDetails;
+  private Game gameDetails;
 
-  public GameDetails getGameDetails() {
+  public Game getGameDetails() {
     return gameDetails;
   }
 
-  public void setGameDetails(GameDetails gameDetails) {
+  public void setGameDetails(Game gameDetails) {
     this.gameDetails = gameDetails;
   }
 }
