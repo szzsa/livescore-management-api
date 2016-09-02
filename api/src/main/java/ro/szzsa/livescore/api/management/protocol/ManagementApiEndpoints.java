@@ -9,7 +9,9 @@ import ro.szzsa.livescore.api.management.protocol.request.StandingsUpdateRequest
  */
 public final class ManagementApiEndpoints {
 
-  public static final String MANAGEMENT_API_ROOT_PATH = "/api/management/v1";
+  public static final String MANAGEMENT_API_ROOT_PATH = "/api/management";
+
+  public static final String MANAGEMENT_API_V1_ROOT_PATH = MANAGEMENT_API_ROOT_PATH + "/v1";
 
   public static final String UPDATE_STANDINGS_PATH = "/standings/update";
 
@@ -22,21 +24,21 @@ public final class ManagementApiEndpoints {
    *
    * @see StandingsUpdateRequest
    */
-  public static final String UPDATE_STANDINGS_URL = MANAGEMENT_API_ROOT_PATH + UPDATE_STANDINGS_PATH;
+  public static final String UPDATE_STANDINGS_URL = MANAGEMENT_API_V1_ROOT_PATH + UPDATE_STANDINGS_PATH;
 
   /**
    * Endpoint for version synchronization.
    *
    * @see GamesUpdateRequest
    */
-  public static final String UPDATE_GAMES_URL = MANAGEMENT_API_ROOT_PATH + UPDATE_GAMES_PATH;
+  public static final String UPDATE_GAMES_URL = MANAGEMENT_API_V1_ROOT_PATH + UPDATE_GAMES_PATH;
 
   /**
    * Endpoint for game details retrieval.
    *
    * @see GameDetailsUpdateRequest
    */
-  public static final String UPDATE_GAME_DETAILS_URL = MANAGEMENT_API_ROOT_PATH + UPDATE_GAME_DETAILS_PATH;
+  public static final String UPDATE_GAME_DETAILS_URL = MANAGEMENT_API_V1_ROOT_PATH + UPDATE_GAME_DETAILS_PATH;
 
   private ManagementApiEndpoints() {
     throw new UnsupportedOperationException();
