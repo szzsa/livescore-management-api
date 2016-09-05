@@ -17,9 +17,13 @@ import ro.szzsa.utils.connector.Request;
 
 public class ManagementApiHttpClient implements ManagementApiClient {
 
+  private final String serverUrl;
   private Connector connector = Connectors.createHttpConnector();
-
   private Converter converter = Converters.createJsonConverter();
+
+  public ManagementApiHttpClient(String serverUrl) {
+    this.serverUrl = serverUrl;
+  }
 
   @Override
   public void updateStandings(Standings standings) throws ManagementApiException {
@@ -27,7 +31,7 @@ public class ManagementApiHttpClient implements ManagementApiClient {
       StandingsUpdateRequest requestPayload = new StandingsUpdateRequest();
       requestPayload.setStandings(standings);
       String message = converter.toString(requestPayload);
-      Request request = new Request(ManagementApiEndpoints.UPDATE_STANDINGS_URL, message);
+      Request request = new Request(serverUrl + ManagementApiEndpoints.UPDATE_STANDINGS_URL, message);
 
       connector.sendRequest(request);
     } catch (Exception e) {
@@ -41,7 +45,7 @@ public class ManagementApiHttpClient implements ManagementApiClient {
       GamesUpdateRequest requestPayload = new GamesUpdateRequest();
       requestPayload.setGames(games);
       String message = converter.toString(requestPayload);
-      Request request = new Request(ManagementApiEndpoints.UPDATE_GAMES_URL, message);
+      Request request = new Request(serverUrl + ManagementApiEndpoints.UPDATE_GAMES_URL, message);
 
       connector.sendRequest(request);
     } catch (Exception e) {
@@ -55,7 +59,7 @@ public class ManagementApiHttpClient implements ManagementApiClient {
       GameDetailsUpdateRequest requestPayload = new GameDetailsUpdateRequest();
       requestPayload.setGameDetails(gameDetails);
       String message = converter.toString(requestPayload);
-      Request request = new Request(ManagementApiEndpoints.UPDATE_GAME_DETAILS_URL, message);
+      Request request = new Request(serverUrl + ManagementApiEndpoints.UPDATE_GAME_DETAILS_URL, message);
 
       connector.sendRequest(request);
     } catch (Exception e) {
