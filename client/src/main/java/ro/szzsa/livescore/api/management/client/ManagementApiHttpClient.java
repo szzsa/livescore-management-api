@@ -18,8 +18,10 @@ import ro.szzsa.utils.connector.Request;
 public class ManagementApiHttpClient implements ManagementApiClient {
 
   private final String serverUrl;
-  private Connector connector = Connectors.createHttpConnector();
-  private Converter converter = Converters.createJsonConverter();
+
+  private final Connector connector = Connectors.createHttpConnector();
+
+  private final Converter converter = Converters.createJsonConverter();
 
   public ManagementApiHttpClient(String serverUrl) {
     this.serverUrl = serverUrl;
