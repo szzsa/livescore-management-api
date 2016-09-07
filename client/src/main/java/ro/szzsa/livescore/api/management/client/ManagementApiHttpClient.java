@@ -2,8 +2,6 @@ package ro.szzsa.livescore.api.management.client;
 
 import java.util.List;
 
-import ro.szzsa.livescore.api.management.client.converter.Converter;
-import ro.szzsa.livescore.api.management.client.converter.Converters;
 import ro.szzsa.livescore.api.management.client.exception.ManagementApiException;
 import ro.szzsa.livescore.api.management.protocol.ManagementApiEndpoints;
 import ro.szzsa.livescore.api.management.protocol.request.GameDetailsUpdateRequest;
@@ -14,17 +12,21 @@ import ro.szzsa.livescore.model.Standings;
 import ro.szzsa.utils.connector.Connector;
 import ro.szzsa.utils.connector.Connectors;
 import ro.szzsa.utils.connector.Request;
+import ro.szzsa.utils.converter.Converter;
+import ro.szzsa.utils.converter.Converters;
 
 public class ManagementApiHttpClient implements ManagementApiClient {
 
   private final String serverUrl;
 
-  private final Connector connector = Connectors.createHttpConnector();
+  private final Connector connector;
 
-  private final Converter converter = Converters.createJsonConverter();
+  private final Converter converter;
 
-  public ManagementApiHttpClient(String serverUrl) {
+  public ManagementApiHttpClient(String serverUrl, String username, String password) {
     this.serverUrl = serverUrl;
+    connector = Connectors.customHttpConnector().setUsername(username).setPassword(password).build();
+    converter = Converters.createJsonConverter();
   }
 
   @Override
