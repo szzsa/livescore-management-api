@@ -25,7 +25,13 @@ public class ManagementApiHttpClient implements ManagementApiClient {
 
   public ManagementApiHttpClient(String serverUrl, String username, String password) {
     this.serverUrl = serverUrl;
-    connector = Connectors.customHttpConnector().setUsername(username).setPassword(password).build();
+    connector = Connectors.withCredentials(username, password).build();
+    converter = Converters.createJsonConverter();
+  }
+
+  public ManagementApiHttpClient(String serverUrl, Connector connector) {
+    this.serverUrl = serverUrl;
+    this.connector = connector;
     converter = Converters.createJsonConverter();
   }
 

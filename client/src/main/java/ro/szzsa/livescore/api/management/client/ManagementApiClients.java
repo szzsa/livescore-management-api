@@ -9,7 +9,11 @@ public final class ManagementApiClients {
     throw new UnsupportedOperationException();
   }
 
-  public static ManagementApiClient createHttpClient(String serverUrl, String username, String password) {
+  public static ManagementApiClient createDefaultHttpClient(String serverUrl, String username, String password) {
     return new ManagementApiHttpClient(serverUrl, username, password);
+  }
+
+  public static ManagementApiHttpClientBuilder createCustomHttpClient(String serverUrl, String username, String password) {
+    return new ManagementApiHttpClientBuilder(serverUrl, username, password);
   }
 }
