@@ -10,7 +10,7 @@ import ro.szzsa.livescore.api.management.protocol.request.StandingsUpdateRequest
 import ro.szzsa.livescore.model.Game;
 import ro.szzsa.livescore.model.Standings;
 import ro.szzsa.utils.connector.Connector;
-import ro.szzsa.utils.connector.Connectors;
+import ro.szzsa.utils.connector.HttpConnectorBuilder;
 import ro.szzsa.utils.connector.Request;
 import ro.szzsa.utils.converter.Converter;
 import ro.szzsa.utils.converter.Converters;
@@ -25,7 +25,7 @@ public class ManagementApiHttpClient implements ManagementApiClient {
 
   public ManagementApiHttpClient(String serverUrl, String username, String password) {
     this.serverUrl = serverUrl;
-    connector = Connectors.withCredentials(username, password).build();
+    connector = new HttpConnectorBuilder(username, password).build();
     converter = Converters.createJsonConverter();
   }
 
