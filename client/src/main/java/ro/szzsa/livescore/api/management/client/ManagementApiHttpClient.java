@@ -6,9 +6,9 @@ import ro.szzsa.livescore.api.management.client.exception.ManagementApiException
 import ro.szzsa.livescore.api.management.protocol.ManagementApiEndpoints;
 import ro.szzsa.livescore.api.management.protocol.request.GameDetailsUpdateRequest;
 import ro.szzsa.livescore.api.management.protocol.request.GamesUpdateRequest;
-import ro.szzsa.livescore.api.management.protocol.request.StandingsUpdateRequest;
+import ro.szzsa.livescore.api.management.protocol.request.LeaguePhaseUpdateRequest;
 import ro.szzsa.livescore.model.Game;
-import ro.szzsa.livescore.model.Standings;
+import ro.szzsa.livescore.model.LeaguePhase;
 import ro.szzsa.utils.connector.Connector;
 import ro.szzsa.utils.connector.HttpConnectorBuilder;
 import ro.szzsa.utils.connector.Request;
@@ -36,12 +36,12 @@ public class ManagementApiHttpClient implements ManagementApiClient {
   }
 
   @Override
-  public void updateStandings(Standings standings) throws ManagementApiException {
+  public void updateLeaguePhases(List<LeaguePhase> leaguePhases) throws ManagementApiException {
     try {
-      StandingsUpdateRequest requestPayload = new StandingsUpdateRequest();
-      requestPayload.setStandings(standings);
+      LeaguePhaseUpdateRequest requestPayload = new LeaguePhaseUpdateRequest();
+      requestPayload.setLeaguePhases(leaguePhases);
       String message = converter.toString(requestPayload);
-      Request request = new Request(serverUrl + ManagementApiEndpoints.UPDATE_STANDINGS_URL, message);
+      Request request = new Request(serverUrl + ManagementApiEndpoints.UPDATE_LEAGUE_PHASES_URL, message);
 
       connector.sendRequest(request);
     } catch (Exception e) {
