@@ -1,6 +1,6 @@
 dependencies {
   compile project(':livescore-management-api')
-  compile 'ro.szzsa.utils:httpconnector:1.0'
+  compile 'ro.szzsa.utils:httpconnector:1.1'
   compile 'ro.szzsa.utils:converter:1.0'
   testCompile 'junit:junit:4.12'
 }
